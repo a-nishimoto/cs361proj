@@ -1,0 +1,10 @@
+[
+    {
+        "stock": "AAPL",
+        "amount": 600
+    },
+    {
+        "stock": "GOOG",
+        "amount": 100
+    }
+]
