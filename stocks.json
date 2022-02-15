@@ -1,10 +1,14 @@
 [
     {
         "stock": "AAPL",
-        "amount": 600
+        "shares": 20.0
     },
     {
-        "stock": "GOOG",
-        "amount": 100
+        "stock": "F",
+        "shares": 100.0
+    },
+    {
+        "stock": "ORCL",
+        "shares": 100.0
     }
 ]

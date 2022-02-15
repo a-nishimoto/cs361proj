@@ -1,4 +1,5 @@
 # API functions
+from cmath import isclose
 from polygon import RESTClient
 from datetime import datetime, date, timedelta
 
@@ -12,8 +13,7 @@ def isClosed(date) -> bool:
     """
 
     # markets are closed on weekends
-    d = datetime(date[0:4], date[5:7], date[8:])
-    if d.weekday() > 4:
+    if date.weekday() > 4:
         return True
 
     # determine market holidays
@@ -29,7 +29,7 @@ def isClosed(date) -> bool:
             if holiday.status == "closed":
                 holidays.append(holiday.date)
 
-        if date in holidays:
+        if str(date) in holidays:
             return True
 
     except:
@@ -58,3 +58,26 @@ def updateCurrentPrice(ticker: str):
         res = c.stocks_equities_previous_close(ticker)
         res = res.results
         return res[0]['c']
+
+
+def priceNDaysBefore(ticker: str, days: int):
+    """returns the price for a stock x amount of days ago"""
+
+    # get the current date
+    curDate = date.today()
+    prevDate = curDate - timedelta(days)
+
+    # subtract days if the markets are closed
+    while isClosed(prevDate):
+        prevDate = prevDate - timedelta(1)
+
+    with RESTClient(key) as c:
+        res = c.stocks_equities_daily_open_close(ticker, str(prevDate))
+        return res.close
+
+
+def getName(ticker):
+    """returns the name of the company"""
+    with RESTClient(key) as c:
+        resp = c.reference_ticker_details_vx(ticker)
+        return resp.results['name']
