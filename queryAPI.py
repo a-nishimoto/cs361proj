@@ -1,9 +1,8 @@
 # API functions
-from cmath import isclose
 from polygon import RESTClient
 from datetime import datetime, date, timedelta
 
-key = "XyYJRPzNQebo1mk_Kv9WvzSnjlVhWCQu"
+key = None
 
 
 def isClosed(date) -> bool:
