@@ -1,4 +1,5 @@
 import os
+from turtle import towards
 from stocks import Stock
 import queryAPI
 import json
@@ -234,12 +235,20 @@ class Interface:
 
         print(f"Getting information about {queryAPI.getName(s)}. Please wait")
 
-        # integrate someone's microservice here
-        time.sleep(4)
+        toWrite = queryAPI.getName(s)
+        toWrite = toWrite.replace(" ", "_")
+        toWrite = toWrite.replace(".", "")
 
-        print("Information found!")
+        with open('input.txt', 'w+') as file:
+            file.write(f"https://en.wikipedia.org/wiki/{toWrite}")
 
-        with open('input.txt', 'r') as file:
+        os.system('python WikiScraper.py')
+
+        time.sleep(7)
+        clearConsole()
+        print("Information found! \n")
+
+        with open('tester.txt', 'r') as file:
             contents = file.read()
             print(contents)
 

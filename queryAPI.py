@@ -2,7 +2,7 @@
 from polygon import RESTClient
 from datetime import datetime, date, timedelta
 
-key = None
+key = "XyYJRPzNQebo1mk_Kv9WvzSnjlVhWCQu"
 
 
 def isClosed(date) -> bool:
