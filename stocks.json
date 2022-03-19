@@ -1,14 +1,1 @@
-[
-    {
-        "stock": "AAPL",
-        "shares": 20.0
-    },
-    {
-        "stock": "F",
-        "shares": 100.0
-    },
-    {
-        "stock": "ORCL",
-        "shares": 100.0
-    }
-]
+[{"stock": "F", "shares": 100.0}, {"stock": "ORCL", "shares": 100.0}, {"stock": "AAPL", "shares": 10.0}]
